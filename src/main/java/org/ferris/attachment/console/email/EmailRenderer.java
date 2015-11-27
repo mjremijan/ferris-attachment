@@ -24,6 +24,9 @@ public class EmailRenderer {
     @Inject @MessageProperty("message")
     protected String messageTemplate;
     
+    @Inject @MessageProperty("version")
+    protected String versionTemplate;
+    
     @Inject
     protected ArgumentParser parser;
     
@@ -50,8 +53,11 @@ public class EmailRenderer {
         sp.append("<!doctype html><html lang=\"en-US\">\n");
         sp.append("<body>\n");
         {
+            // Body
             sp.append(messageTemplate).append("\n");
             
+            // Version
+            sp.append(String.format("%s\n",versionTemplate));
         }        
         
         sp.append("</body>\n");
