@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../resources/report.css" type="text/css"/><link rel="shortcut icon" href="../resources/report.gif" type="image/gif"/><title>ArgumentParser.java</title><link rel="stylesheet" href="../resources/prettify.css" type="text/css"/><script type="text/javascript" src="../resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ferris-attachment</a> &gt; <a href="index.source.html" class="el_package">org.ferris.attachment.console.arguments</a> &gt; <span class="el_source">ArgumentParser.java</span></div><h1>ArgumentParser.java</h1><pre class="source lang-java linenums">package org.ferris.attachment.console.arguments;
+
+import java.io.File;
+import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
+
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
+@ApplicationScoped
+public class ArgumentParser {
+
+    private List&lt;String&gt; args;
+    
+    private File sent;
+    private File unsent;
+    private String to;
+    private String subject;
+    
+    private String parseForString(String argKey) {
+<span class="nc" id="L22">        int argKeyIdx = 0;</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        for (; argKeyIdx &lt; args.size(); argKeyIdx++) {</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">            if (argKey.equals(args.get(argKeyIdx))) {</span>
+<span class="nc" id="L25">                break;</span>
+            }
+        }
+        
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (argKeyIdx &gt;= args.size()) {</span>
+<span class="nc" id="L30">            throw new ArgumentUsageException();</span>
+        } else {
+<span class="nc" id="L32">            argKeyIdx++;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">            if (argKeyIdx &gt;= args.size()) {</span>
+<span class="nc" id="L34">                throw new ArgumentUsageException();</span>
+            }
+        }
+        
+<span class="nc" id="L38">        return args.get(argKeyIdx);        </span>
+    }
+    
+    private File parseForDirectory(String argKey) {
+<span class="nc" id="L42">        File dir = new File(parseForString(argKey));        </span>
+<span class="nc bnc" id="L43" title="All 4 branches missed.">        if (!dir.exists() || !dir.isDirectory()) {</span>
+<span class="nc" id="L44">            throw new ArgumentUsageException();</span>
+        }
+<span class="nc" id="L46">        return dir;</span>
+    }
+    
+    private void setArgs(List&lt;String&gt; args) {
+<span class="nc bnc" id="L50" title="All 4 branches missed.">        if (args == null || args.isEmpty()) {</span>
+<span class="nc" id="L51">            throw new ArgumentUsageException();</span>
+        }
+<span class="nc" id="L53">        this.args = args;</span>
+<span class="nc" id="L54">    }</span>
+    
+<span class="nc" id="L56">    public ArgumentParser(List&lt;String&gt; args) {</span>
+<span class="nc" id="L57">        setArgs(args);</span>
+<span class="nc" id="L58">        sent = parseForDirectory(&quot;-sent&quot;);</span>
+<span class="nc" id="L59">        unsent = parseForDirectory(&quot;-unsent&quot;);</span>
+<span class="nc" id="L60">        to = parseForString(&quot;-to&quot;);</span>
+<span class="nc" id="L61">        subject = parseForString(&quot;-subject&quot;);</span>
+<span class="nc" id="L62">    }</span>
+    
+    public File getSentDirectory() {
+<span class="nc" id="L65">        return sent;</span>
+    }
+    
+    public File getUnsentDirectory() {
+<span class="nc" id="L69">        return unsent;</span>
+    }
+    
+    public String getTo() {
+<span class="nc" id="L73">        return to;</span>
+    }
+    
+    public String getSubject() {
+<span class="nc" id="L77">        return subject;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

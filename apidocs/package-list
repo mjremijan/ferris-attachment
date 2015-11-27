@@ -1,0 +1,9 @@
+org.ferris.attachment.console.application
+org.ferris.attachment.console.arguments
+org.ferris.attachment.console.attachment
+org.ferris.attachment.console.conf
+org.ferris.attachment.console.email
+org.ferris.attachment.console.log4j
+org.ferris.attachment.console.main
+org.ferris.attachment.console.message
+org.ferris.attachment.console.retry

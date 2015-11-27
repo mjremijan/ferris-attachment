@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../resources/report.css" type="text/css"/><link rel="shortcut icon" href="../resources/report.gif" type="image/gif"/><title>ArgumentUsageException.java</title><link rel="stylesheet" href="../resources/prettify.css" type="text/css"/><script type="text/javascript" src="../resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ferris-attachment</a> &gt; <a href="index.source.html" class="el_package">org.ferris.attachment.console.arguments</a> &gt; <span class="el_source">ArgumentUsageException.java</span></div><h1>ArgumentUsageException.java</h1><pre class="source lang-java linenums">package org.ferris.attachment.console.arguments;
+
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
+public class ArgumentUsageException extends RuntimeException {
+
+    private static final long serialVersionUID = 98746516549984494L;
+
+    public ArgumentUsageException() {
+<span class="nc" id="L12">        super(</span>
+              &quot;\n&quot;
+            + &quot;USAGE\n&quot;
+            + &quot;  start-attachment.sh \n&quot;
+            + &quot;    -unsent   /path/to/directory/for/unsent/attachments \n&quot;
+            + &quot;    -sent     /path/to/directory/for/sent/attachments \n&quot;            
+            + &quot;    -to       \&quot;Rita Red &lt;rita.red@somewhere.com&gt;, Oscar Orange &lt;oscar.orange@somewhere.com&gt;\&quot; \n&quot;
+            + &quot;    -subject  \&quot;Attachment email\&quot;&quot;
+            + &quot;\n&quot;
+        );
+<span class="nc" id="L22">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
