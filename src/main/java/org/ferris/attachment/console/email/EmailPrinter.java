@@ -20,7 +20,9 @@ public class EmailPrinter {
         @Observes @Priority(PRINT_EMAIL_MESSAGE) EmailEvent evnt
     ) { 
         log.info("ENTER");
-        
+        if (evnt.getAttachment() == null) {
+            return;
+        } 
         log.info(String.format("\nEmail subject:\n%s",evnt.getSubject()));
         log.info(String.format("\nEmail message:\n%s",evnt.getMessage()));
         log.info(String.format("\nEmail attachment:\n%s", evnt.getAttachment().getName()));

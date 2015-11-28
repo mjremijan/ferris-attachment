@@ -57,6 +57,9 @@ public class EmailSender {
     ) throws MessagingException, IOException 
     {
         log.info(String.format("ENTER"));
+        if (evnt.getAttachment() == null) {
+            return;
+        } 
         
         // Create MimeMultipart
         MimeMultipart content = new MimeMultipart("related");

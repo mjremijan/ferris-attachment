@@ -89,6 +89,9 @@ public class AttachmentHandler {
         @Observes @Priority(MARK_THE_UNSENT_ATTACHMENT_AS_SENT) EmailEvent evnt
     ) {
         log.info(String.format("ENTER"));
+        if (evnt.getAttachment() == null) {
+            return;
+        }        
         evnt.getAttachment().renameTo(
             new File(parser.getSentDirectory(), evnt.getAttachment().getName())
         );            
