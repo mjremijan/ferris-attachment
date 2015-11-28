@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
  
     <bannerLeft>
-        <name>Ferris Attachment</name>
-        <!-- src>images/banner-left.png</src -->
+        <!-- <name>Ferris Attachment</name> -->
+        <src>images/web-banner.png</src>
         <href>index.html</href>
     </bannerLeft>
     

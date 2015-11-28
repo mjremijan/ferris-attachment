@@ -8,6 +8,11 @@ a#bannerLeft h2 {
     padding-bottom: 30px;
 }
 
+a#bannerLeft img {    
+    padding-bottom: 30px;
+}
+
+
 a {
     color: rgb(98,98,153);
 }
