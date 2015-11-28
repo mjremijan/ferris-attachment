@@ -20,10 +20,12 @@ import org.jboss.weld.experimental.Priority;
         @Observes @Priority(PRINT_EMAIL_MESSAGE) EmailEvent evnt
     ) { 
 <span class="nc" id="L22">        log.info(&quot;ENTER&quot;);</span>
-        
-<span class="nc" id="L24">        log.info(String.format(&quot;\nEmail subject:\n%s&quot;,evnt.getSubject()));</span>
-<span class="nc" id="L25">        log.info(String.format(&quot;\nEmail message:\n%s&quot;,evnt.getMessage()));</span>
-<span class="nc" id="L26">        log.info(String.format(&quot;\nEmail attachment:\n%s&quot;, evnt.getAttachment().getName()));</span>
-<span class="nc" id="L27">    }</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (evnt.getAttachment() == null) {</span>
+<span class="nc" id="L24">            return;</span>
+        } 
+<span class="nc" id="L26">        log.info(String.format(&quot;\nEmail subject:\n%s&quot;,evnt.getSubject()));</span>
+<span class="nc" id="L27">        log.info(String.format(&quot;\nEmail message:\n%s&quot;,evnt.getMessage()));</span>
+<span class="nc" id="L28">        log.info(String.format(&quot;\nEmail attachment:\n%s&quot;, evnt.getAttachment().getName()));</span>
+<span class="nc" id="L29">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

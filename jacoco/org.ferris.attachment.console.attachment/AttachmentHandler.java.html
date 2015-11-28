@@ -89,9 +89,12 @@ import org.jboss.weld.experimental.Priority;
         @Observes @Priority(MARK_THE_UNSENT_ATTACHMENT_AS_SENT) EmailEvent evnt
     ) {
 <span class="nc" id="L91">        log.info(String.format(&quot;ENTER&quot;));</span>
-<span class="nc" id="L92">        evnt.getAttachment().renameTo(</span>
-<span class="nc" id="L93">            new File(parser.getSentDirectory(), evnt.getAttachment().getName())</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        if (evnt.getAttachment() == null) {</span>
+<span class="nc" id="L93">            return;</span>
+        }        
+<span class="nc" id="L95">        evnt.getAttachment().renameTo(</span>
+<span class="nc" id="L96">            new File(parser.getSentDirectory(), evnt.getAttachment().getName())</span>
         );            
-<span class="nc" id="L95">    }</span>
+<span class="nc" id="L98">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -24,40 +24,46 @@ import org.jboss.weld.experimental.Priority;
     @Inject @MessageProperty(&quot;message&quot;)
     protected String messageTemplate;
     
+    @Inject @MessageProperty(&quot;version&quot;)
+    protected String versionTemplate;
+    
     @Inject
     protected ArgumentParser parser;
     
     protected void render(
         @Observes @Priority(RENDER_EMAIL_MESSAGE) EmailEvent evnt
     ) { 
-<span class="nc" id="L33">        log.info(&quot;ENTER&quot;);</span>
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (evnt.getAttachment() == null) {</span>
-<span class="nc" id="L35">            return;</span>
+<span class="nc" id="L36">        log.info(&quot;ENTER&quot;);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (evnt.getAttachment() == null) {</span>
+<span class="nc" id="L38">            return;</span>
         }
         
-<span class="nc" id="L38">        log.debug(String.format(&quot;Rendering email subject..&quot;));</span>
-<span class="nc" id="L39">        evnt.setSubject(</span>
-<span class="nc" id="L40">            String.format(</span>
+<span class="nc" id="L41">        log.debug(String.format(&quot;Rendering email subject..&quot;));</span>
+<span class="nc" id="L42">        evnt.setSubject(</span>
+<span class="nc" id="L43">            String.format(</span>
                   subjectTemplate
-<span class="nc" id="L42">                , parser.getSubject()</span>
-<span class="nc" id="L43">                , evnt.getSentCount() + 1</span>
-<span class="nc" id="L44">                , evnt.getTotalCount()</span>
+<span class="nc" id="L45">                , parser.getSubject()</span>
+<span class="nc" id="L46">                , evnt.getSentCount() + 1</span>
+<span class="nc" id="L47">                , evnt.getTotalCount()</span>
             )
         );
         
-<span class="nc" id="L48">        log.debug(String.format(&quot;Rendering email message..&quot;));</span>
-<span class="nc" id="L49">        StringBuilder sp = new StringBuilder();</span>
-<span class="nc" id="L50">        sp.append(&quot;&lt;!doctype html&gt;&lt;html lang=\&quot;en-US\&quot;&gt;\n&quot;);</span>
-<span class="nc" id="L51">        sp.append(&quot;&lt;body&gt;\n&quot;);</span>
+<span class="nc" id="L51">        log.debug(String.format(&quot;Rendering email message..&quot;));</span>
+<span class="nc" id="L52">        StringBuilder sp = new StringBuilder();</span>
+<span class="nc" id="L53">        sp.append(&quot;&lt;!doctype html&gt;&lt;html lang=\&quot;en-US\&quot;&gt;\n&quot;);</span>
+<span class="nc" id="L54">        sp.append(&quot;&lt;body&gt;\n&quot;);</span>
         {
-<span class="nc" id="L53">            sp.append(messageTemplate).append(&quot;\n&quot;);</span>
+            // Body
+<span class="nc" id="L57">            sp.append(messageTemplate).append(&quot;\n&quot;);</span>
             
+            // Version
+<span class="nc" id="L60">            sp.append(String.format(&quot;%s\n&quot;,versionTemplate));</span>
         }        
         
-<span class="nc" id="L57">        sp.append(&quot;&lt;/body&gt;\n&quot;);</span>
-<span class="nc" id="L58">        sp.append(&quot;&lt;/html&gt;\n&quot;);</span>
+<span class="nc" id="L63">        sp.append(&quot;&lt;/body&gt;\n&quot;);</span>
+<span class="nc" id="L64">        sp.append(&quot;&lt;/html&gt;\n&quot;);</span>
  
-<span class="nc" id="L60">        evnt.setMessage(sp.toString());</span>
-<span class="nc" id="L61">    }</span>
+<span class="nc" id="L66">        evnt.setMessage(sp.toString());</span>
+<span class="nc" id="L67">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
