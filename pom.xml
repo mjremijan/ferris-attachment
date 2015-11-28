@@ -5,7 +5,7 @@
 
     <groupId>org.ferris</groupId>    
     <artifactId>ferris-attachment</artifactId>
-    <version>1.0.0.2-SNAPSHOT</version>
+    <version>1.0.0.2</version>
     <packaging>jar</packaging>
 
     <organization>
