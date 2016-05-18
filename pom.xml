@@ -193,7 +193,7 @@
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-core</artifactId>
-            <version>3.0.0.Alpha13</version>
+            <version>3.0.0.Alpha15</version>
         </dependency>
     </dependencies>
     
@@ -421,9 +421,11 @@
                     <reportSet>
                         <id>Report Set 1</id>
                         <reports>
-                            <report>project-team</report>
-                            <report>summary</report>
-                            <report>license</report>
+							<report>project-team</report>
+							<report>summary</report>
+							<report>license</report>
+							<report>issue-tracking</report>              
+							<report>scm</report>
                         </reports>
                     </reportSet>
                 </reportSets>
